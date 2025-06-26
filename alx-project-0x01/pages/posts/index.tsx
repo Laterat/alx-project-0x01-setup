@@ -7,11 +7,13 @@ import { useState } from "react";
 const Posts: React.FC<{posts: PostProps[]}> = ({ posts }) => {
   console.log(posts)
 
-  const [isModalOpen, setModalOpen]= useState(false);
+ 
 
-  const [post, setPost]= useState<PostData | null>(null);
+  const [post, setPost] = useState<PostData | null>(null);
 
-  const handleAddPOst=(newPost: PostData) =>{
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleAddPost=(newPost: PostData) =>{
     setPost({...newPost, id: posts.length + 1});
   };
 
@@ -38,7 +40,7 @@ const Posts: React.FC<{posts: PostProps[]}> = ({ posts }) => {
       {isModalOpen &&(
         <PostModal 
           onClose={() => setModalOpen(false)} 
-          onSubmit={handleAddPOst} 
+          onSubmit={handleAddPost} 
         />
       )}
     </div>
